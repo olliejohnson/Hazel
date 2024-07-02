@@ -1,0 +1,39 @@
+[
+ {
+  "directory": "/home/oliver/source/Hazel",
+  "arguments": [
+   "g++",
+   "-MD",
+   "-MP",
+   "-DDEBUG",
+   "-fPIC",
+   "-g",
+   "-o",
+   "build/obj/Hazel//Debug/Application.o",
+   "-MF",
+   "build/obj/Hazel//Debug/Application.d",
+   "-c",
+   "Hazel/src/Hazel/Application.cpp"
+  ],
+  "file": "Hazel/src/Hazel/Application.cpp"
+ },
+ {
+  "directory": "/home/oliver/source/Hazel",
+  "arguments": [
+   "g++",
+   "-MD",
+   "-MP",
+   "-DDEBUG",
+   "-DHZ_PLATFORM_LINUX",
+   "-IHazel/src",
+   "-g",
+   "-o",
+   "build/obj/Sandbox//Debug/SandboxApp.o",
+   "-MF",
+   "build/obj/Sandbox//Debug/SandboxApp.d",
+   "-c",
+   "Sandbox/src/SandboxApp.cpp"
+  ],
+  "file": "Sandbox/src/SandboxApp.cpp"
+ }
+]
