@@ -1,7 +1,7 @@
-workspace "GameEngine"
+workspace "Hazel"
     configurations { "Debug", "Release" }
 
-project "GameEngine"
+project "HazelEngine"
     kind "ConsoleApp"
     language "C++"
     targetdir "bin/%{cfg.buildcfg}"
