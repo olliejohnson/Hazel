@@ -11,3 +11,6 @@ HazelEngine.make
 Makefile
 
 /build/
+/bin/
+/bin-int/
+/.vs/
