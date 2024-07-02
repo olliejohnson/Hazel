@@ -1,12 +1,29 @@
 workspace "Hazel"
     configurations { "Debug", "Release" }
 
-project "HazelEngine"
-    kind "ConsoleApp"
+project "Hazel"
+    kind "SharedLib"
     language "C++"
-    targetdir "bin/%{cfg.buildcfg}"
+    targetdir "build/bin/%{cfg.buildcfg}"
+    objdir "build/obj/Hazel/${cfg.buildcfg}"
 
-    files { "**.h", "**.hpp", "**.cpp" }
+    files { "Hazel/**.h", "Hazel/**.hpp", "Hazel/**.cpp" }
+
+    filter "configurations:Debug"
+        defines { "DEBUG" }
+        symbols "On"
+
+    filter "configurations:Release"
+        defines { "NDEBUG" }
+        optimize "On"
+
+project "Sandbox"
+    kind "WindowedApp"
+    language "C++"
+    targetdir "build/bin/%{cfg.buildcfg}"
+    objdir "build/obj/Sandbox/${cfg.buildcfg}"
+
+    files { "Sandbox/**.h", "Sandbox/**.hpp", "Sandbox/**.cpp" }
 
     filter "configurations:Debug"
         defines { "DEBUG" }
