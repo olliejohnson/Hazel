@@ -22,4 +22,6 @@
 #define HZ_CORE_ASSERT
 #endif
 
+#define HZ_BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
+
 #define BIT(x) (1 << x)
