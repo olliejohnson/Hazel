@@ -52,6 +52,10 @@ project "Hazel"
 		"opengl32.lib"
 	}
 
+	defines {
+		"IMGUI_API=_declspec(dllexport)"
+	}
+
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
@@ -117,6 +121,10 @@ project "Sandbox"
 
 	links {
 		"Hazel"
+	}
+
+	defines {
+		"IMGUI_API=__declspec(dllimport)"
 	}
 
 	filter "system:windows"
