@@ -1,6 +1,7 @@
 workspace "Hazel"
 	architecture "x64"
 	configurations { "Debug", "Release", "Dist" }
+	startproject "Sandbox"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -9,9 +10,12 @@ IncludeDir["GLFW"] = "Hazel/vendor/GLFW/include"
 IncludeDir["GLAD"] = "Hazel/vendor/GLAD/include"
 IncludeDir["imgui"] = "Hazel/vendor/imgui"
 
-include "Hazel/vendor/GLFW"
-include "Hazel/vendor/GLAD"
-include "Hazel/vendor/imgui"
+group "Deps"
+	include "Hazel/vendor/GLFW"
+	include "Hazel/vendor/GLAD"
+	include "Hazel/vendor/imgui"
+
+group ""
 
 project "Hazel"
 	location "Hazel"
@@ -56,7 +60,7 @@ project "Hazel"
 		}
 
 		postbuildcommands {
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"

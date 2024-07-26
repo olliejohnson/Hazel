@@ -5,6 +5,8 @@
 
 #include <glad/glad.h>
 
+#include "Hazel/Input.h"
+
 namespace Hazel {
 
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -34,8 +36,6 @@ namespace Hazel {
     void Application::OnEvent(Event& event) {
         EventDispatcher dispatcher(event);
         dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-
-        HZ_CORE_TRACE("{0}", event.ToString());
 
         for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();) {
             (*--it)->OnEvent(event);
