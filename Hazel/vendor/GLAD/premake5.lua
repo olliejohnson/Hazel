@@ -18,32 +18,20 @@ project "GLAD"
 	}
 
 	filter "system:linux"
-		pic "On"
+		pic "on"
 
 		systemversion "latest"
 
 	filter "system:macosx"
-		pic "On"
+		pic "on"
 
 	filter "system:windows"
 		systemversion "latest"
-		buildoptions "/MD"
 
 	filter "configurations:Debug"
 		runtime "Debug"
 		symbols "on"
 
-	filter { "system:windows", "configurations:Debug-AS" }	
-		runtime "Debug"
-		symbols "on"
-		sanitize { "Address" }
-		flags { "NoRuntimeChecks", "NoIncrementalLink" }
-
 	filter "configurations:Release"
 		runtime "Release"
-		optimize "speed"
-
-    filter "configurations:Dist"
-		runtime "Release"
-		optimize "speed"
-        symbols "off"
+		optimize "on"

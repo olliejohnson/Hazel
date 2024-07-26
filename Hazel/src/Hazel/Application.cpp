@@ -50,7 +50,7 @@ namespace Hazel {
 
     void Application::Run() {
         while (m_Running) {
-            glClearColor(0.5, 0.5, 0.5, 1);
+            glClearColor(0.1f, 0.1f, 0.1f, 1);
             glClear(GL_COLOR_BUFFER_BIT);
 
             for (Layer* layer : m_LayerStack)
