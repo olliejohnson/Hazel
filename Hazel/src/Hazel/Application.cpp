@@ -3,9 +3,9 @@
 
 #include "Hazel/Log.h"
 
-#include <glad/glad.h>
+// TEMP
+#include <GLFW/glfw3.h>
 
-#include "Hazel/Input.h"
 
 namespace Hazel {
 
@@ -17,7 +17,7 @@ namespace Hazel {
         HZ_CORE_ASSERT(!s_Instance, "Application already exists");
         s_Instance = this;
 
-        m_Window = std::unique_ptr<Window>(Window::Create());
+        m_Window = Scope<Window>(Window::Create());
         m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
         m_ImGuiLayer = new ImGuiLayer();
@@ -50,11 +50,12 @@ namespace Hazel {
 
     void Application::Run() {
         while (m_Running) {
-            glClearColor(0.1f, 0.1f, 0.1f, 1);
-            glClear(GL_COLOR_BUFFER_BIT);
+            float time = (float)glfwGetTime();
+            Timestep timestep = time - m_LastFrameTime;
+            m_LastFrameTime = time;
 
             for (Layer* layer : m_LayerStack)
-                layer->OnUpdate();
+                layer->OnUpdate(timestep);
 
             m_ImGuiLayer->Begin();
             for (Layer* layer : m_LayerStack)
