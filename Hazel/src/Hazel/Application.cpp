@@ -1,5 +1,6 @@
 #include "hzpch.h"
 #include "Application.h"
+#include "Renderer/Renderer.h"
 
 #include "Hazel/Log.h"
 
@@ -19,6 +20,8 @@ namespace Hazel {
 
         m_Window = Scope<Window>(Window::Create());
         m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+
+        Renderer::Init();
 
         m_ImGuiLayer = new ImGuiLayer();
         PushOverlay(m_ImGuiLayer);
